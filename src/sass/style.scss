@@ -1,0 +1,381 @@
+@use './color' as *;
+@import './offers';
+@import './price';
+@import './contact';
+@import './cookie';
+@import './privacy-policy';
+@import './links';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.6rem;
+	color: #fff;
+	background-color: #fff;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+// NAV
+
+.nav {
+	position: relative;
+	position: fixed;
+	display: flex;
+	z-index: 50;
+	touch-action: none;
+	&__mobile {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		height: 100vh;
+		width: 80vw;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		background: none;
+		text-align: center;
+		// backdrop-filter: blur(10px);
+		background-color: $white;
+		transform: translateX(25%);
+		transition: transform 1s;
+		z-index: 10;
+		touch-action: none;
+
+		&-active {
+			transform: translateX(150%);
+		}
+	}
+	&__desktop {
+		display: none;
+	}
+	&__link {
+		position: relative;
+		display: flex;
+		padding: 1.1em;
+		margin-bottom: 1.1em;
+		font-size: 2em;
+		font-weight: 600;
+		color: $secondary;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: color 0.5s;
+
+		// test hover
+		&:hover {
+			color: $main-color;
+		}
+	}
+	&__item {
+		list-style: none;
+	}
+}
+
+.burger-btn {
+	position: absolute;
+	//   position: fixed;
+	top: 0.8em;
+	right: 0.8em;
+	font-size: 2.3em;
+	background: none;
+	border: 1px solid transparent;
+	color: $secondary;
+	cursor: pointer;
+	transition: transform 0.5s;
+	z-index: 100;
+}
+
+.hide {
+	display: none;
+}
+
+.logo {
+	position: absolute;
+	//   position: fixed;
+	width: 2.4em;
+	height: 2.4em;
+	top: 0.8em;
+	left: 0.5em;
+	cursor: pointer;
+	margin: 0.9em 0.9em;
+	z-index: 100;
+}
+.nav__big-logo {
+	display: none;
+}
+
+// HEADER
+
+.header {
+	overflow: hidden;
+	&__hero-image {
+		position: relative;
+		background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/main_page_small.jpeg');
+		height: 50vh;
+		width: 100vw;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	&__hero-text {
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		h1 {
+			text-transform: uppercase;
+			font-size: 2.4em;
+			margin-bottom: 1em;
+			font-weight: 600;
+			letter-spacing: 2px;
+			color: $secondary;
+		}
+		p {
+			text-transform: capitalize;
+			font-size: 1.6em;
+			color: aliceblue;
+			letter-spacing: 4px;
+		}
+	}
+}
+
+.main-text {
+	overflow: hidden;
+	p {
+		padding: 1em;
+		text-align: center;
+		color: rgb(35, 35, 35);
+		word-spacing: normal;
+		font-weight: bold;
+	}
+}
+
+// OFFERS
+
+.cards {
+	display: grid;
+	background-color: rgba(76, 115, 151, 0.1);
+	padding: 1em 1em 0em 1em;
+	h2 {
+		color: $bgc-dark;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 0.5em;
+	}
+	hr {
+		width: 100%;
+	}
+	&__box {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 3fr;
+		gap: 1em;
+		padding: 0.5em;
+		overflow: hidden;
+		background: none;
+	}
+	&__card {
+		position: relative;
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		padding: 0.35em;
+		text-align: center;
+		border: 2px solid #4c9796;
+		border-bottom: 4px solid #4c9796;
+		border-radius: 6px;
+		background-color: #fff;
+		box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
+
+		h3 {
+			padding: 0.2em;
+			font-size: 1.6em;
+			color: #35516a;
+		}
+		p {
+			display: none;
+			padding: 0.4em;
+			font-size: 1em;
+			color: $bgc-dark;
+		}
+
+		&-one {
+			grid-column: 1/5;
+			grid-row: 1/3;
+		}
+
+		&-two {
+			grid-column: 1/5;
+			grid-row: 3/5;
+		}
+
+		&-three {
+			grid-column: 1/5;
+			grid-row: 5/7;
+		}
+		&-four {
+			grid-column: 1/5;
+			grid-row: 7/9;
+		}
+	}
+	&__link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		padding: 1em;
+		margin: 0.5em;
+		color: $white;
+		font-weight: bold;
+		background-color: $secondary;
+		border: 2px solid $secondary;
+		border-radius: 5px;
+
+		&:hover {
+			color: #4c9796;
+			background-color: $white;
+		}
+	}
+}
+
+// PRICES
+.price {
+	display: grid;
+	overflow: hidden;
+	background-color: rgba(76, 151, 150, 0.1);
+	padding: 1em;
+	h2 {
+		color: $bgc-dark;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 0.5em;
+	}
+	hr {
+		width: 100%;
+	}
+
+	&__box {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 3fr;
+		gap: 1em;
+		padding: 0.5em;
+		overflow: hidden;
+		background: none;
+	}
+	&__card {
+		position: relative;
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		padding: 0.35em;
+		text-align: center;
+		border: 2px solid $main-color;
+		border-bottom: 4px solid $main-color;
+		border-radius: 4px;
+		background-color: #fff;
+		box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
+
+		&-one {
+			grid-column: 1/-1;
+			grid-row: 1;
+		}
+
+		&-two {
+			grid-column: 1/-1;
+			grid-row: 2;
+		}
+
+		&-three {
+			grid-column: 1/-1;
+			grid-row: 3;
+		}
+
+		h3 {
+			justify-content: center;
+			align-items: center;
+			padding: 0.2em 0.45em;
+			font-size: 1.6em;
+			color: #35516a;
+		}
+		p {
+			padding: 0.4em;
+			font-size: 1em;
+			color: $bgc-dark;
+		}
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		padding: 1em;
+		margin: 0.5em;
+		color: $white;
+		font-weight: bold;
+		background-color: $main-color;
+		border: 2px solid $main-color;
+		border-radius: 5px;
+
+		&:hover {
+			color: $main-color;
+			background-color: $white;
+		}
+	}
+}
+
+//
+.footer {
+	background-color: $bgc-dark;
+	overflow: hidden;
+
+	ul {
+		list-style-type: none;
+	}
+	&__box-link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		list-style: none;
+		padding: 1em;
+	}
+	&__link {
+		display: flex;
+		color: $white;
+		text-decoration: none;
+		text-transform: uppercase;
+		padding: 0.3em;
+	}
+	&__bottom-text {
+		text-align: center;
+		font-size: 1em;
+		background-color: $bgc-dark;
+		text-transform: uppercase;
+		padding: 1em;
+	}
+}
+
+@import './media';

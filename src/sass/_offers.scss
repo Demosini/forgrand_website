@@ -1,0 +1,144 @@
+// OFFERS
+
+.main-offers {
+	overflow: hidden;
+	&__hero-image {
+		position: relative;
+		background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/offers__small.jpg');
+		height: 50vh;
+		width: 100vw;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	&__hero-text {
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		h2 {
+			text-transform: uppercase;
+			font-size: 2em;
+			font-weight: 600;
+			letter-spacing: 2px;
+			color: $secondary;
+		}
+	}
+}
+
+.accordion {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1em;
+	width: 100%;
+	background-color: rgba(76, 115, 151, 0.1);
+	overflow: hidden;
+	h2 {
+		color: $bgc-dark;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 0.5em;
+	}
+	hr {
+		width: 100%;
+	}
+	input {
+		position: absolute;
+		opacity: 0;
+		z-index: -1;
+	}
+
+	.row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-top: 1em;
+		font-size: 1.3em;
+		.col {
+			flex: 1;
+		}
+	}
+
+	.tabs {
+		justify-content: center;
+		position: relative;
+		width: 100%;
+		border-radius: 8px;
+		background-color: rgba(76, 115, 151, 0.1);
+		padding: 1em;
+	}
+	.tab {
+		// width: 100vw;
+		color: $secondary;
+		border: 1px solid $secondary;
+		border-radius: 8px;
+		overflow: hidden;
+
+		&-label {
+			display: flex;
+			justify-content: space-between;
+			padding: 1em;
+			background: $white;
+			font-weight: bold;
+			cursor: pointer;
+
+			&:hover {
+				background: darken($secondary, 10%);
+				color: $white;
+			}
+			&::after {
+				content: '+';
+				width: 1em;
+				height: 1em;
+				text-align: center;
+				transition: all 0.8s;
+			}
+		}
+		&-content {
+			max-height: 0;
+			padding: 0 1em;
+			color: $bgc-dark;
+			background: none;
+			transition: all 0.8s;
+		}
+		&-close {
+			display: flex;
+			justify-content: flex-end;
+			padding: 1em;
+			font-size: 0.75em;
+			background: $secondary;
+			color: $white;
+			font-weight: bold;
+			border-radius: 8px;
+			border: 1px solid $secondary;
+			cursor: pointer;
+			&:hover {
+				background: $white;
+				color: $secondary;
+			}
+		}
+	}
+	ul {
+		padding: 0 0.5em;
+	}
+	li {
+		padding: 0.3em;
+	}
+	// :checked
+	input:checked {
+		+ .tab-label {
+			background: darken($secondary, 10%);
+			color: $white;
+			&::after {
+				transform: rotate(90deg);
+			}
+		}
+		~ .tab-content {
+			max-height: inherit;
+			padding: 1em;
+		}
+	}
+}
